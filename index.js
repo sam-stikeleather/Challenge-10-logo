@@ -3,20 +3,34 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 
 function generateLogo(answers) {
-    const {text, textColor, shape, shapeColor} = answers;
-    const svgMarkup = `
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="200">
-      <!-- Inserting the text for the logo with specified text color -->
-      <text x="100" y="100" fill="${textColor}" font-size="30">${text}</text>
-      <!-- Generating the shape markup based on the selected shape and shape color -->
-      ${generateShapeMarkup(shape, shapeColor)}
-    </svg>
-    `;
-    
+    const { text, textColor, shape, shapeColor } = answers;
+    let textX, textY;
+  
+    // Determine the position of the text based on the shape
+    if (shape === "circle") {
+      textX = 200; // x-coordinate for circle center
+      textY = 100; // y-coordinate for circle center
+    } else if (shape === "triangle") {
+      textX = 200; // x-coordinate for triangle center
+      textY = 120; // y-coordinate for triangle center
+    } else if (shape === "square") {
+      textX = 200; // x-coordinate for square center
+      textY = 100; // y-coordinate for square center
+    }
+  
+    // Generating the SVG markup
+    let svgMarkup = `
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="200">
+    ${generateShapeMarkup(shape, shapeColor)}
+    <text x="${textX}" y="${textY}" fill="${textColor}" font-size="30" text-anchor="middle" alignment-baseline="middle">${text}</text>
+  </svg>
+  `;
+  
+    // Save the SVG to a file
     fs.writeFileSync('logo.svg', svgMarkup);
-
+  
     console.log("Generated logo.svg");
-}
+  }
 
 function generateShapeMarkup(shape, shapeColor) {
     if (shape === "circle") {
@@ -28,4 +42,35 @@ function generateShapeMarkup(shape, shapeColor) {
     }
   }
 
+  const questions = [
+    {
+      type: 'input',
+      name: 'text',
+      message: 'Enter up to three characters for the logo:',
+      validate: (input) => {
+        return input.length > 0 && input.length <= 3 ? true : 'Please enter up to three characters.';
+      }
+    },
+    {
+      type: 'input',
+      name: 'textColor',
+      message: 'Enter the text color (color keyword or hexadecimal number):',
+      default: 'black'
+    },
+    {
+      type: 'list',
+      name: 'shape',
+      message: 'Choose a shape:',
+      choices: ['circle', 'triangle', 'square']
+    },
+    {
+      type: 'input',
+      name: 'shapeColor',
+      message: 'Enter the shape color (color keyword or hexadecimal number):',
+      default: 'blue'
+    }
+  ];
   
+  inquirer.prompt(questions)
+    .then(generateLogo)
+    .catch(error => console.error(error));
