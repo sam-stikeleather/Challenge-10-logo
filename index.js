@@ -18,3 +18,14 @@ function generateLogo(answers) {
     console.log("Generated logo.svg");
 }
 
+function generateShapeMarkup(shape, shapeColor) {
+    if (shape === "circle") {
+      return `<circle cx="200" cy="100" r="40" fill="${shapeColor}" />`;
+    } else if (shape === "triangle") {
+      return `<polygon points="160,160 240,160 200,50" fill="${shapeColor}" />`;
+    } else if (shape === "square") {
+      return `<rect x="160" y="60" width="80" height="80" fill="${shapeColor}" />`;
+    }
+  }
+
+  
