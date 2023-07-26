@@ -1,0 +1,24 @@
+{
+  "name": "challenge-10-logo",
+  "version": "1.0.0",
+  "description": "Sam Stikeleather Challenge 10",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sam-stikeleather/Challenge-10-logo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "jest": "^24.9.0"
+  },
+  "bugs": {
+    "url": "https://github.com/sam-stikeleather/Challenge-10-logo/issues"
+  },
+  "homepage": "https://github.com/sam-stikeleather/Challenge-10-logo#readme"
+}
