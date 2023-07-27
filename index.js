@@ -2,7 +2,13 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
-function generateLogo(answers) {
+async function generateLogo(answers = null) {
+    let finalAnswers = answers;
+
+  if (!answers) {
+    // If answers parameter is not provided, then prompt the user for input
+    finalAnswers = await inquirer.prompt(questions);
+  }
     const { text, textColor, shape, shapeColor } = answers;
     let textX, textY;
   
@@ -70,6 +76,8 @@ function generateShapeMarkup(shape, shapeColor) {
       default: 'blue'
     }
   ];
+
+  module.exports = {generateLogo};
   
   inquirer.prompt(questions)
     .then(generateLogo)

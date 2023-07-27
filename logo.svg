@@ -1,6 +1,6 @@
 
   <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="200">
-    <circle cx="200" cy="100" r="40" fill="blue" />
-    <text x="200" y="100" fill="orange" font-size="30" text-anchor="middle" alignment-baseline="middle">SNS</text>
+    <circle cx="200" cy="100" r="40" fill="white" />
+    <text x="200" y="100" fill="black" font-size="30" text-anchor="middle" alignment-baseline="middle">SNS</text>
   </svg>
   
