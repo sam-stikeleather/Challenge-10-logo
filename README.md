@@ -30,3 +30,9 @@ For any questions, please contact me:
 GitHub: [sam.stikeleather](https://github.com/sam.stikeleather)  
 Email: sam.stikeleather@gmail.com
 
+## Video Linj
+
+Below is the link to view the screencastify video of the application being used.
+
+https://drive.google.com/file/d/11HgFlUJXX6xF9SOzjnknrReJzqzWYjm3/view
+
